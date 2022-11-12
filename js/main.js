@@ -88,9 +88,12 @@ function doneTask(event) {
 
 function checkEmptyList() {
 	if (tasks.length === 0) {
-		const emptyListHTML = `<li id="emptyList" class="list-group-item empty-list">
-                  <img src="./img/leaf.svg" alt="Empty" width="48" class="mt-3" />
-                  <div class="empty-list__title">Список дел пуст</div>
+		const emptyListHTML = `
+					<li class="empty-list list-group-item" id="emptyList">
+                  <div class="empty-list__wrapper">
+                     <img src="./img/list.png" alt="to-do list" />
+                     <p class="empty-list__text">Список справ пустий</p>
+                  </div>
                </li>`;
 		tasksList.insertAdjacentHTML('afterbegin', emptyListHTML);
 	};
@@ -111,17 +114,17 @@ function renderTask(task) {
 
 	// Формуємо розмітку для новой задачі
 	const taskHTML = `
-						<li id="${task.id}" class="list-group-item d-flex justify-content-between task-item">
-							<span class="${cssClass}">${task.text}</span>
-							<div class="task-item__buttons">
-								<button type="button" data-action="done" class="btn-action">
-									<img src="./img/tick.svg" alt="Done" width="18" height="18">
-								</button>
-								<button type="button" data-action="delete" class="btn-action">
-									<img src="./img/cross.svg" alt="Done" width="18" height="18">
-								</button>
-							</div>
-						</li>`;
+					<li id="${task.id}" class="task list-group-item">
+                  <p class="${cssClass}">${task.text}</p>
+                  <div class="task__actions">
+                     <button class="task__actions-button" data-action="done">
+                        <img src="./img/done.svg" alt="Done" />
+                     </button>
+                     <button class="task__actions-button" data-action="delete">
+                        <img src="./img/remove.svg" alt="Remove" />
+                     </button>
+                  </div>
+               </li>`;
 
 	// Добавляємо задачу на сторінку
 	tasksList.insertAdjacentHTML('beforeend', taskHTML);
