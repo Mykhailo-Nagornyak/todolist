@@ -52,6 +52,7 @@ body {
 }
 .empty-list__icon {
   color: #42BE2A;
+  transition: all 0.3s ease 0s;
   font-size: 32px;
 }
 .btn-action {
